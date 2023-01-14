@@ -65,6 +65,7 @@ class Repository(object):
         self.products = Dao(Product, self._conn)
         self.suppliers = Dao(Supplier, self._conn)
         self.branches = Dao(Branche, self._conn)
+        self.activities = Dao(Activitie, self._conn)
  
     def _close(self):
         self._conn.commit()
