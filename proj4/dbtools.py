@@ -66,3 +66,21 @@ class Dao(object):
                .format(self._table_name,' AND '.join([col + '=?' for col in column_names]))
  
         self._conn.cursor().execute(stmt, params)
+
+
+    
+    #-----------------ADDED------------------
+    def update(self, set_values, cond):
+        set_column_names = 'quantity'
+        set_params = set_values
+        cond_column_names = 'id'
+        cond_params = cond
+
+        params = set_params + cond_params
+
+        stmt = 'UPDATE {} SET {} WHERE {}'.format(self._table_name,
+                ', '.join([set_column_names + '=(?)']),
+                ' AND '.join([cond_column_names + '=(?)']))
+
+        self._conn.execute(stmt, params)
+    #-----------------ADDED------------------
